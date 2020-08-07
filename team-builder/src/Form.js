@@ -43,17 +43,29 @@ border: none;
 }
 `;
 
-const Form =()=>{
-    const [name, setName] = useState('')
+const Form =(props)=>{
+    const[team, setTeam]=useState({name: ""})
+
+    const handleChanges = (event)=>{
+        console.log("handle change", event.target.value)
+        setTeam({name: event.target.value})
+
+    }
+
+    const submitForm = event =>{
+        event.preventDefault()
+        props.addTeam(team)
+    }
+    
     return(
-<FormCont>
-    <label>
+<FormCont onSubmit={submitForm}>
+    <label htmlFor="name">
         Name:
-        <input type="text" placeholder="Name"/>
+        <input id="name" type="text" placeholder="Name" onChange={handleChanges}/>
     </label>
-    <label>
+    <label htmlFor="email">
         Email:
-        <input type="text" placeholder="Email"/>
+        <input id="email" type="text" placeholder="Email"/>
     </label>
     
     <label>Choose Your Role</label>
@@ -63,7 +75,7 @@ const Form =()=>{
   <option value="Designer">Designer</option>
 </select>
     
-    <button>Submit</button>
+    <button type="submit">Submit</button>
 
 </FormCont>
     )
