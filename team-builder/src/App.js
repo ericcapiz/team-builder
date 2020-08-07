@@ -5,20 +5,13 @@ import Form from './Form';
 import Team from './Team'
 
 function App() {
-  const [teams, setTeam] = useState([
-   {
-      id:1,
-    name: "Eric",
-    email: "ericcapiz@gmail.com",
-    role: "frontend"
-  }
-
-  ]);
+  const [teams, setTeam] = useState([{}]);
   const addTeam = team =>{
     const newTeam = {
       id: Date.now(),
       name: team.name,
-      email: team.email
+      email: team.email,
+      role: team.role
     }
     setTeam([...teams, newTeam])
   }

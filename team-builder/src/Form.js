@@ -44,36 +44,37 @@ border: none;
 `;
 
 const Form =(props)=>{
-    const[team, setTeam]=useState({name: ""})
+    const[team, setTeam]=useState({name: "", email: "" , role: ""})
 
     const handleChanges = (event)=>{
         console.log("handle change", event.target.value)
-        setTeam({name: event.target.value})
+        const newStateObj = {...team, [event.target.name]: event.target.value,  [event.target.email]: event.target.value, [event.target.role]: event.target.value}
+        setTeam(newStateObj)
 
     }
 
-    const submitForm = event =>{
-        event.preventDefault()
-        props.addTeam(team)
-    }
+    const submitForm = (event) =>{
+        event.preventDefault();
+        props.addTeam(team);
+        setTeam({name: "", email: "", role: ""});
+    };
     
     return(
 <FormCont onSubmit={submitForm}>
     <label htmlFor="name">
         Name:
-        <input id="name" type="text" placeholder="Name" onChange={handleChanges}/>
+        <input id="name" type="text" placeholder="Name" value={team.name} name="name" onChange={handleChanges}/>
     </label>
     <label htmlFor="email">
         Email:
-        <input id="email" type="text" placeholder="Email"/>
+        <input id="email" type="text" placeholder="Email" value={team.email} name="email" onChange={handleChanges}/>
     </label>
     
-    <label>Choose Your Role</label>
-    <select  name="role">
-  <option value="Backend">Backend</option>
-  <option value="Frontend">Frontend</option>
-  <option value="Designer">Designer</option>
-</select>
+    <label htmlFor="role">
+        Role:
+        <input id="role" type="text"  placeholder="Backend, Frontend,etc" value={team.role} name="role" onChange={handleChanges}/>
+    </label>
+    
     
     <button type="submit">Submit</button>
 

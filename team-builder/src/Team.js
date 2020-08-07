@@ -8,6 +8,7 @@ const Team =props=>{
                     <div>
                         <h1>Name: {teams.name}</h1>
                         <h1>Email: {teams.email}</h1>
+                        <h1>Role: {teams.role}</h1>
                     </div>
                 ))
             }
