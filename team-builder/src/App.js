@@ -5,7 +5,7 @@ import Form from './Form';
 import Team from './Team'
 
 function App() {
-  const [teams, setTeam] = useState([{}]);
+  const [teams, setTeam] = useState([]);
   const addTeam = team =>{
     const newTeam = {
       id: Date.now(),
